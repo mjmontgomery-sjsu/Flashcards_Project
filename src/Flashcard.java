@@ -18,6 +18,7 @@ public class Flashcard {
         return question;
     }
 
+    
 
     public string getAnswer()
     {
