@@ -3,7 +3,10 @@
  */
 public class FlashcardQuizzer {
 
+public FlashcardQuizzer()
+{
 
+}
 
 
     public static void main(String[] args)

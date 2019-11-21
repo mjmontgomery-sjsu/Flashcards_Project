@@ -4,6 +4,16 @@
 public class Deck {
 
 
+    public Deck(Flashcard flash)
+    {
+
+    }
+
+
+
+
+
+
 
 
 
