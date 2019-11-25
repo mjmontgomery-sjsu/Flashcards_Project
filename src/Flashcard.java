@@ -8,9 +8,10 @@ public class Flashcard {
      * @param question the question for the card
      * @param answer the answer for the card
      */
-    public Flashcard(string question, string answer){
+    public Flashcard(string question, string answer, boolean beenViewed){
         this.question = question;
         this.answer = answer;
+        this.beenViewed = beenViewed;
     }
 
     /**
@@ -34,6 +35,15 @@ public class Flashcard {
     }
 
     /**
+     * Gets the status of whether the card has been viewed by the user
+     * @return beenViewed a boolean of wjether the card has been viewed
+     */
+    public boolean getView()
+    {
+        return beenViewed;
+    }
+
+    /**
      * Sets the Question
      * @param newQuestion the new question for the card
      */
@@ -51,7 +61,16 @@ public class Flashcard {
         answer = newAnswer;
     }
 
+    /**
+     * Sets the status of whether the card has been viewed
+     * @param view
+     */
+    public void setViewed(boolean view)
+    {
+        beenViewed = view;
+    }
 
+    private boolean beenViewed;
     private string question;
     private string answer;
 
