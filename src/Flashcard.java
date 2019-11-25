@@ -8,7 +8,7 @@ public class Flashcard {
      * @param question the question for the card
      * @param answer the answer for the card
      */
-    public Flashcard(string question, string answer){
+    public Flashcard(String question, String answer){
         this.question = question;
         this.answer = answer;
     }
@@ -17,7 +17,7 @@ public class Flashcard {
      * Gets the question
      * @return Question the question on the card
      */
-    public string getQuestion()
+    public String getQuestion()
     {
         return question;
     }
@@ -27,7 +27,7 @@ public class Flashcard {
      * Gets the Answer
      * @return answer the answer on the card
      */
-    public string getAnswer()
+    public String getAnswer()
     {
 
         return answer;
@@ -37,7 +37,7 @@ public class Flashcard {
      * Sets the Question
      * @param newQuestion the new question for the card
      */
-    public void setQuestion(string newQuestion)
+    public void setQuestion(String newQuestion)
     {
         question = newQuestion;
     }
@@ -46,14 +46,14 @@ public class Flashcard {
      * Sets the answer
      * @param newAnswer the new answer for the card
      */
-    public void setAnswer(string newAnswer)
+    public void setAnswer(String newAnswer)
     {
         answer = newAnswer;
     }
 
 
-    private string question;
-    private string answer;
+    private String question;
+    private String answer;
 
 
 
