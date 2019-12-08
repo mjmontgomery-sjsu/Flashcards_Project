@@ -1,0 +1,9 @@
+Statement	A statement (proposition) is a sentence that is either true or false, but not both.	true
+Negation	A negation of a statement p is the statement "not p" or "it is not the case that p," and is denoted by ⌐p. A statement and its negation always have the opposite truth value.	false
+Conjunction	The conjunction of two statements p and q is the statement "p and q," and is denoted by p ᴧ q. The conjunction p ᴧ q is true if both p and q are true and is false otherwise.	false
+Disjunction	The disjunction of two statements p and q is the statement "p or q," and is denoted by p v q. The disjunction p v q is true if either of p and q are true or if both are true.	false
+Conditional	A statement of the form "if p, then q" where p and q are statements, is called a conditional and is denoted by p -> q.	false
+Forms of the conditional statement	The conditional, p→ q can be stated in any of the following ways: If p, then q q if p p implies q p only if q p is sufficient for q q is necessary for p	false
+De Morgan's Law 	For statements p and q, ⌐(p ᴧ q) ≡ ⌐p v ⌐q ⌐(p v q) ≡ ⌐p ᴧ ⌐q	false
+Set	A set is an unordered collection of objects. The objects in the set are called the ELEMENTS of the set. If x is an element of a set S, we denote this by x Є S. If x is not an element of a set S, we denote this by x Ɇ S.	false
+Subset	A set B is said to be a subset of a set A if every element of B is also an element of A. In other words, x Є B implies x Є A. To denote that B is a subset of A, we write B _C_ A	false
