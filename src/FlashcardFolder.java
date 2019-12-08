@@ -30,8 +30,6 @@ public class FlashcardFolder {
 
     }
 
-
-
     /**
      *
      * @return the current card being viewed
@@ -235,8 +233,6 @@ public class FlashcardFolder {
     {
         deckOfCards.clear();
     }
-
-
 
 
 

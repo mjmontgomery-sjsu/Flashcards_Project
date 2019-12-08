@@ -6,7 +6,11 @@ import javax.swing.*;
  */
 public class FlashcardBuilder extends JFrame {
 
-public static void main(String[] args)
+    /**
+     * Launches the application
+     *
+     */
+    public static void main(String[] args)
 {
 
 }
