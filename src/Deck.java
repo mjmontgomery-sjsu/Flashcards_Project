@@ -176,7 +176,9 @@ public class Deck {
         flashCard = abc;
     }
 
-
+   public int getQuestionCount() {
+	   return flashCard.size();
+   }
 
 
 }
