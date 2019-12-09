@@ -179,6 +179,10 @@ public class Deck {
    public int getQuestionCount() {
 	   return flashCard.size();
    }
+   
+   public void setCards(LinkedList<Flashcard> newCards) {
+       flashCard = newCards;
+   }
 
 
 }

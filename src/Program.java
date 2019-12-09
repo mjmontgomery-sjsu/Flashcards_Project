@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -174,7 +176,150 @@ public class Program extends JFrame {
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setVisible(true);
 
+        //Reviewer Window
+        JFrame frame3 = new JFrame("Flashcard Study");
+        frame3.setBounds(750,50, 600, 600);
+        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setVisible(true);
+        getContentPane().setLayout(new GridLayout(6, 1));
+        
+	        JPanel p1 = new JPanel();
+	        JPanel p1Inner = new JPanel();
+	        JPanel p1Inner2 = new JPanel();
+	        JPanel p1Inner3 = new JPanel();
+	        p1.setLayout(new GridLayout(1, 3));
+	        p1Inner.setLayout(new FlowLayout());
+	        p1Inner2.setLayout(new BorderLayout());
+	        p1Inner3.setLayout(new BorderLayout());
+	        p1.add(p1Inner2);
+	        p1.add(p1Inner3);
+	        p1.add(p1Inner);
+	        p1Inner.add(cardsStudiedLabel);
+	        p1Inner.add(cardsStudiedTextField);
+	        p1Inner.add(cardsRemainedLabel);
+	        p1Inner.add(cardsRemainedTextField);
+	        p1Inner2.add(readInButtonReviewer, BorderLayout.CENTER);
+	        p1Inner3.add(readOtherButton, BorderLayout.CENTER);
+	        p1Inner2.add(Box.createHorizontalStrut(5), BorderLayout.EAST);
+	        p1Inner2.add(Box.createHorizontalStrut(10), BorderLayout.WEST);
+	        p1Inner2.add(Box.createVerticalStrut(20), BorderLayout.NORTH);
+	        p1Inner2.add(Box.createVerticalStrut(20), BorderLayout.SOUTH);
+	        p1Inner3.add(Box.createHorizontalStrut(10), BorderLayout.EAST);
+	        p1Inner3.add(Box.createHorizontalStrut(5), BorderLayout.WEST);
+	        p1Inner3.add(Box.createVerticalStrut(20), BorderLayout.NORTH);
+	        p1Inner3.add(Box.createVerticalStrut(20), BorderLayout.SOUTH);
+	        
+	        // panel 2
+	        JPanel p2 = new JPanel();
+	        p2.setLayout(new BorderLayout());
+	        p2.add(questionLabel, BorderLayout.NORTH);
+	        p2.add(questionTextAreaReviewer, BorderLayout.CENTER);
+	        p2.add(Box.createHorizontalStrut(30), BorderLayout.WEST);
+	        p2.add(Box.createHorizontalStrut(30), BorderLayout.EAST);
+	        
+	        // panel 3
+	        JPanel p3 = new JPanel();
+	        p3.setLayout(new BorderLayout());
+	        p3.add(answerLabel, BorderLayout.NORTH);
+	        p3.add(answerTextAreaReviewer, BorderLayout.CENTER);
+	        p3.add(Box.createHorizontalStrut(30), BorderLayout.WEST);
+	        p3.add(Box.createHorizontalStrut(30), BorderLayout.EAST);
+	        
+	        // panel 4
+	        JPanel p4 = new JPanel();
+	        JPanel p4Inner = new JPanel();
+	        p4.setLayout(new BorderLayout());
+	        p4Inner.setLayout(new FlowLayout());
+	        p4.add(p4Inner, BorderLayout.CENTER);
+	        p4Inner.add(setGoalButton);
+	        p4Inner.add(showAnswerButton);
+	        p4Inner.add(nextCardButtonReviewer);
+	        p4.add(Box.createVerticalStrut(15), BorderLayout.NORTH);
+	        
+	        // panel 6
+	        JPanel p6 = new JPanel();
+	        JPanel p6Inner = new JPanel();
+	        p6.setLayout(new BorderLayout());
+	        p6Inner.setLayout(new FlowLayout());
+	        p6.add(p6Inner, BorderLayout.EAST);
+	        p6Inner.add(saveButton);
+	        p6Inner.add(exitButton);
+	        p6.add(Box.createVerticalStrut(40), BorderLayout.NORTH);
+	        
+	        // add these six panels to this frame
+	        getContentPane().add(p1);
+	        getContentPane().add(p2);
+	        getContentPane().add(p3);
+	        getContentPane().add(p4);
+	        getContentPane().add(p6);
 
+	        // set label properties
+		        answerLabel.setLabelFor(answerTextAreaReviewer);
+		        questionLabel.setLabelFor(questionTextAreaReviewer);
+		        cardsRemainedLabel.setLabelFor(cardsRemainedTextField);
+		        cardsStudiedLabel.setLabelFor(cardsStudiedTextField);
+		        cardsRemainedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		        cardsStudiedLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		        
+		        // attach listeners to each component
+		        showAnswerButton.addActionListener(new ShowAnswerButtonListener());
+		        saveButton.addActionListener(new SaveButtonListener());
+		        exitButton.addActionListener(new ExitButtonListener());
+		        nextCardButtonReviewer.addActionListener(new ReviewerNextCardButtonListener());
+		        setGoalButton.addActionListener(new SetGoalButtonListener());
+		        readInButtonReviewer.addActionListener(new ReadInButtonListener());
+		        readOtherButton.addActionListener(new ReadOtherButtonListener());
+		        
+		        // set keyboard equivalents for each button
+		        setGoalButton.setMnemonic('g');
+		        showAnswerButton.setMnemonic('a');
+		        nextCardButtonReviewer.setMnemonic('n');
+		        saveButton.setMnemonic('s');
+		        exitButton.setMnemonic('e');
+		        readInButtonReviewer.setMnemonic('l');
+		        readOtherButton.setMnemonic('f');
+		        
+		        // set color and font themes
+		        // panel 1
+		        p1.setBackground(new Color(230, 230, 250));
+		        p1Inner.setBackground(new Color(230, 230, 250));
+		        p1Inner2.setBackground(new Color(230, 230, 250));
+		        p1Inner3.setBackground(new Color(230, 230, 250));
+		        readInButtonReviewer.setBackground(new Color(152, 251, 152));
+		        readOtherButton.setBackground(new Color(152, 251, 152));
+		        cardsStudiedTextField.setBackground(new Color(255, 240, 245));
+		        cardsStudiedTextField.setForeground(new Color(0, 0, 205));
+		        cardsRemainedTextField.setBackground(new Color(255, 240, 245));
+		        cardsRemainedTextField.setForeground(new Color(255, 0, 0));
+		        // panel 2
+		        p2.setBackground(new Color(210, 255, 215));
+		        questionTextAreaReviewer.setForeground(new Color(0, 0, 205));
+		        questionTextAreaReviewer.setBackground(new Color(255, 255, 204));
+		        questionTextAreaReviewer.setFont(new Font("Consolas", Font.PLAIN, 17));
+		        // panel 3
+		        p3.setBackground(new Color(210, 255, 215));
+		        answerTextAreaReviewer.setBackground(new Color(255, 255, 204));
+		        answerTextAreaReviewer.setForeground(new Color(255, 69, 0));
+		        answerTextAreaReviewer.setFont(new Font("Consolas", Font.PLAIN, 17));
+		        // panel 4
+		        p4.setBackground(new Color(210, 255, 215));
+		        p4Inner.setBackground(new Color(210, 255, 215));
+		        showAnswerButton.setBackground(new Color(255, 222, 173));
+		        setGoalButton.setBackground(new Color(240, 230, 140));
+		        nextCardButtonReviewer.setBackground(new Color(255, 160, 122));
+		        // panel 6
+		        p6.setBackground(new Color(210, 255, 215));
+		        p6Inner.setBackground(new Color(255, 182, 193));
+		        saveButton.setForeground(new Color(255, 255, 0));
+		        saveButton.setBackground(new Color(138, 43, 226));
+		        exitButton.setForeground(new Color(255, 255, 0));
+		        exitButton.setBackground(new Color(218, 112, 214));
+		        
+		        // set initial component visibility
+		        setTextFieldEditable(false);
+		        setTextFieldEnabled(false);
+		        setButtonEnabled(false);
+		        setGoalButton.setEnabled(false);
 
     }
 
@@ -631,7 +776,204 @@ public class Program extends JFrame {
 
 
     //Put Listners for Quizzer Here
-
+    /**
+     *************** Creates listener classes. ***************
+     */
+    /**
+     * Inner class that handles events for showAnswerButton.
+     */
+    class ShowAnswerButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            Flashcard currentCard = reviewer.getNextCard();
+            answerTextAreaReviewer.setText(currentCard.getAnswer());
+            showAnswerButton.setEnabled(false);
+        }
+    }
+    
+    /**
+     * Inner class that handles events for saveButton.
+     */
+    class SaveButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            if (reviewer.save())
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Save data file successfully! You progress is now saved.", 
+                        "Output Successful", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Failed to write to data file! Please retry.", 
+                        "Output Failed", 
+                        JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    /**
+     * Inner class that handles events for exitButton.
+     */
+    class ExitButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            if (reviewer.getGoal() >= reviewer.getTime()) {
+                int yesNo = JOptionPane.showConfirmDialog(
+                        null, 
+                        "You have not reached your goal, quit anyway?\n(your" +
+                        " progress will be saved automatically)", 
+                        "Exit", 
+                        JOptionPane.OK_CANCEL_OPTION);
+                if (yesNo == JOptionPane.YES_OPTION) {
+                	reviewer.save();
+                    System.exit(0);
+                }
+            }
+            else System.exit(0);
+        }
+    }
+    
+    class ReviewerNextCardButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+        	reviewer.advance();
+            nextCardButtonReviewer.setEnabled(false);
+            showAnswerButton.setEnabled(true);
+            cardsStudiedTextField.setText(Integer.toString(reviewer.getTime()));
+            cardsRemainedTextField.setText(
+                    Integer.toString(reviewer.getGoal() - reviewer.getTime()));
+            if (reviewer.getGoal() <= reviewer.getTime()) {
+                int yesNo = JOptionPane.showConfirmDialog(
+                        null, 
+                        "Your goal has been reached. Continue?\nClick" +
+                        " 'Yes' to continue, 'No' to quit.", 
+                        "Congratulations!", 
+                        JOptionPane.YES_NO_OPTION);
+                if (yesNo == JOptionPane.YES_OPTION) {
+                	reviewer = new FlashcardReviewer();
+                    setGoalButton.setEnabled(true);
+                    setTextFieldEnabled(false);
+                    setButtonEnabled(false);
+                }
+                if (yesNo == JOptionPane.NO_OPTION) System.exit(0);
+            }
+            Flashcard currentCard = reviewer.getNextCard();
+            questionTextAreaReviewer.setText(currentCard.getQuestion());
+            answerTextAreaReviewer.setText("Click 'Show Answer' to see.");
+            reviewer.save();
+        }
+    }
+    
+    /**
+     * Inner class that handles events for setGoalButton.
+     */
+    class SetGoalButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            try {
+                int goal = Integer.parseInt(
+                        JOptionPane.showInputDialog("How many cards " +
+                        		"would you like to study?").trim());
+                if (goal <= 0 || goal > reviewer.getCardDeckSize())
+                    throw new IndexOutOfBoundsException();
+                reviewer.setGoal(goal);
+                cardsStudiedTextField.setText(Integer.toString(
+                		reviewer.getTime()));
+                cardsRemainedTextField.setText(Integer.toString(
+                		reviewer.getGoal() - reviewer.getTime()));
+                setTextFieldEnabled(true);
+                questionTextAreaReviewer.setText(reviewer.getNextCard().getQuestion());
+                answerTextAreaReviewer.setText("Click 'Show Answer' button to see.");
+                showAnswerButton.setEnabled(true);
+                setGoalButton.setEnabled(false);
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Illegal characters found! Please retry.", 
+                        "Invalid Input", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Please enter your goal in order to begin!", 
+                        "Warning", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch (IndexOutOfBoundsException e) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Invalid number! Please retry.", 
+                        "Invalid Input", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    /**
+     * Inner class that handles events for readInButton.
+     */
+    class ReadInButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            if (reviewer.read() == 1) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Read data file successfully! You can now edit the file.", 
+                        "Successful Read-in", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                readInButtonReviewer.setEnabled(false);
+                readOtherButton.setEnabled(false);
+                setGoalButton.setEnabled(true);
+                questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
+            }
+            else if (reviewer.read() == 0) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Data file is NOT found or is BLANK! Please check" +
+                        " file location.", 
+                        "Initialization Error", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else 
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Unable to read in the data file! Please retry.", 
+                        "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+    }
+    
+    /**
+     * Inner class that handles events for readOtherButton.
+     */
+    class ReadOtherButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            try {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setDialogTitle("Select File to Read in:");
+                int result = chooser.showOpenDialog(getContentPane());
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File file = chooser.getSelectedFile();
+                    reviewer.createCardDeck(file);
+                    readInButtonReviewer.setEnabled(false);
+                    readOtherButton.setEnabled(false);
+                    setGoalButton.setEnabled(true);
+                    questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
+                }            
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Invalid data file format! Please retry.", 
+                        "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(
+                        null, 
+                        "Invalid data file format! Please retry.", 
+                        "ERROR", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
 
     /**
@@ -737,6 +1079,36 @@ public class Program extends JFrame {
         setNextButtonVisibility(upper);
         setPrevButtonVisibility(lower);
     }
+    
+    private void setTextFieldEditable(boolean b) {
+        cardsStudiedTextField.setEditable(b);
+        cardsRemainedTextField.setEditable(b);
+        questionTextAreaReviewer.setEditable(b);
+        answerTextAreaReviewer.setEditable(b);
+    }
+    
+    /**
+     * Controls the visibility of text field components
+     * @param b Boolean that is passed to enable/disable
+     * components
+     */
+    private void setTextFieldEnabled(boolean b) {
+        cardsStudiedTextField.setEnabled(b);
+        cardsRemainedTextField.setEnabled(b);
+        questionTextAreaReviewer.setEnabled(b);
+        answerTextAreaReviewer.setEnabled(b);
+    }
+    
+    /**
+     * Controls the visibility of button components
+     * @param b Boolean that is passed to enable/disable
+     * components
+     */
+    private void setButtonEnabled(boolean b) {
+        showAnswerButton.setEnabled(false);
+        nextCardButtonReviewer.setEnabled(false);
+        saveButton.setEnabled(false);
+    }
 
     /**
      * Exception for when the question that is trying to be added is a duplicate
@@ -823,6 +1195,7 @@ public class Program extends JFrame {
 
     //IMPORTANT
     private FlashcardFolder folder = new FlashcardFolder();
+    private FlashcardReviewer reviewer = new FlashcardReviewer();
 
     //TextArea and Field for Editor
     private JTextArea questionTextArea = new JTextArea("Select File in the Menu to Load or Create a Deck",10,20);
@@ -867,7 +1240,21 @@ public class Program extends JFrame {
 
 
     //Put Variables for Quizzer Here
-
+    private JLabel cardsStudiedLabel = new JLabel("Cards studied: ");
+    private JLabel cardsRemainedLabel = new JLabel("Cards remaining: ");
+    private JLabel questionLabel = new JLabel("     Question: ");
+    private JLabel answerLabel = new JLabel("     Answer: ");
+    private JTextField cardsStudiedTextField = new JTextField("##");
+    private JTextField cardsRemainedTextField = new JTextField("##");
+    private JTextArea questionTextAreaReviewer = new JTextArea("Please click 'Read Data File' button to begin.");
+    private JTextArea answerTextAreaReviewer = new JTextArea("");
+    private JButton setGoalButton = new JButton("Set Your Goal!");
+    private JButton nextCardButtonReviewer = new JButton("Next Card");
+    private JButton showAnswerButton = new JButton("Show Answer");
+    private JButton saveButton = new JButton("Save");
+    private JButton exitButton = new JButton("Exit");
+    private JButton readInButtonReviewer = new JButton("Load Last Progress");
+    private JButton readOtherButton = new JButton("Load From...");
 
 
 }
