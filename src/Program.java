@@ -177,7 +177,7 @@ public class Program extends JFrame {
         frame2.setVisible(true);
 
         //Reviewer Window
-        JFrame frame3 = new JFrame("Study Flashcards");
+        JFrame frame3 = new JFrame("Review Flashcards");
         frame3.setBounds(750,50, 600, 600);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setVisible(true);
