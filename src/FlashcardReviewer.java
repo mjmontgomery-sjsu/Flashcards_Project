@@ -7,13 +7,13 @@ import java.util.LinkedList;
 
 public class FlashcardReviewer {
 	private Deck deck;
-    private LinkedList<Flashcard> cardDeck;
+    private LinkedList<Flashcard> deckOfCards;
     private int time;
     private int goal;
     
     public FlashcardReviewer() {
     	deck = new Deck();
-    	cardDeck = deck.getCards();
+    	deckOfCards = deck.getCards();
     	time = 0;
     	goal = -1;
     }
@@ -23,17 +23,17 @@ public class FlashcardReviewer {
     }
     
     public Flashcard getNextCard() {
-        return cardDeck.get(time);
+        return deckOfCards.get(time);
     }
     
     public void setAsViewed() {
-    	Flashcard card = cardDeck.removeFirst();
+    	Flashcard card = deckOfCards.removeFirst();
     	card.setViewed(true);
-    	cardDeck.add(card);
+    	deckOfCards.add(card);
     }
     
     public void createCardDeck(File file) {
-        cardDeck = deck.getCards(file);
+        deckOfCards = deck.getCards(file);
     }
     
     public int getGoal() {
@@ -45,7 +45,7 @@ public class FlashcardReviewer {
     }
     
     public int getCardDeckSize() {
-        return cardDeck.size();
+        return deckOfCards.size();
     }
     
     public void advance() {
@@ -59,12 +59,12 @@ public class FlashcardReviewer {
     }
     
     public boolean save() {
-        deck.setCards(cardDeck);
+        deck.setCards(deckOfCards);
         return deck.saveCards();
     }
     
     public void setCardDeck(LinkedList<Flashcard> cards) {
-        cardDeck = cards;
+        deckOfCards = cards;
     }
     
     @Override
@@ -76,7 +76,7 @@ public class FlashcardReviewer {
                 this.getCardDeckSize() != that.getCardDeckSize())
             return false;
         for (int i = 0; i < this.getCardDeckSize(); i++)
-            if (!this.cardDeck.get(i).equals(that.cardDeck.get(i)))
+            if (!this.deckOfCards.get(i).equals(that.deckOfCards.get(i)))
                 return false;
         return true;
     }

@@ -251,8 +251,8 @@ public class Program extends JFrame {
 		        reviewerItem4.addActionListener(new ExitButtonListener());
 		        nextCardButtonReviewer.addActionListener(new ReviewerNextCardButtonListener());
 		        setGoalButton.addActionListener(new SetGoalButtonListener());
-		        reviewerItem2.addActionListener(new ReadInButtonListener());
-		        reviewerItem1.addActionListener(new ReadOtherButtonListener());
+		        reviewerItem2.addActionListener(new ReviewerReadInDefaultMenuItemListener());
+		        reviewerItem1.addActionListener(new ReviewerReadInMenuItemListener());
 		        setViewedButton.addActionListener(new SetViewedButtonListener());
 		        
 		        setTextFieldEditable(false);
@@ -260,6 +260,7 @@ public class Program extends JFrame {
 		        setButtonEnabled(false);
 		        setGoalButton.setEnabled(false);
 		        setViewedButton.setEnabled(false);
+		        reviewerItem3.setEnabled(false);
 
     }
 
@@ -870,7 +871,7 @@ public class Program extends JFrame {
     /**
      * Class that handles events for the default file reading in
      */
-    class ReadInButtonListener implements ActionListener {
+    class ReviewerReadInDefaultMenuItemListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             if (reviewer.read() == 1) {
                 JOptionPane.showMessageDialog(
@@ -878,6 +879,7 @@ public class Program extends JFrame {
                         "Read data file successfully! You can now edit the file.", 
                         "Successful Read-in", 
                         JOptionPane.INFORMATION_MESSAGE);
+                reviewerItem3.setEnabled(true);
                 setGoalButton.setEnabled(true);
                 setViewedButton.setEnabled(false);
                 questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
@@ -902,7 +904,7 @@ public class Program extends JFrame {
     /**
      * Class that handles events for the finding a file to read in
      */
-    class ReadOtherButtonListener implements ActionListener {
+    class ReviewerReadInMenuItemListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             try {
                 JFileChooser chooser = new JFileChooser();
@@ -913,6 +915,7 @@ public class Program extends JFrame {
                     reviewer.createCardDeck(file);
                     setGoalButton.setEnabled(true);
                     setViewedButton.setEnabled(false);
+                    reviewerItem3.setEnabled(true);
                     questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
                 }            
             }
@@ -1203,7 +1206,7 @@ public class Program extends JFrame {
     private JLabel answerLabel = new JLabel("     Answer: ");
     private JTextField cardsStudiedTextField = new JTextField("##");
     private JTextField cardsRemainedTextField = new JTextField("##");
-    private JTextArea questionTextAreaReviewer = new JTextArea("Select File in the Menu to Load to begin!",10,20);
+    private JTextArea questionTextAreaReviewer = new JTextArea("Select File in the Menu to begin!",10,20);
     private JTextArea answerTextAreaReviewer = new JTextArea(10,20);
     private JButton setGoalButton = new JButton("Set Your Goal!");
     private JButton nextCardButtonReviewer = new JButton("Next Card");
