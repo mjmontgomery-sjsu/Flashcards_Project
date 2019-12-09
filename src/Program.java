@@ -182,6 +182,12 @@ public class Program extends JFrame {
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setVisible(true);
         frame3.getContentPane().setLayout(new GridLayout(6, 1));
+
+        //Set state of Test areas
+        questionTextAreaReviewer.setLineWrap(true);
+        questionTextAreaReviewer.setWrapStyleWord(true);
+        answerTextAreaReviewer.setLineWrap(true);
+        answerTextAreaReviewer.setWrapStyleWord(true);
         
 	        JPanel p1 = new JPanel();
 	        JPanel p1Inner = new JPanel();
@@ -223,7 +229,7 @@ public class Program extends JFrame {
 	        p4.add(Box.createVerticalStrut(15), BorderLayout.NORTH);
 	        
 	        
-	        // add these six panels to this frame
+	        // add these six panels to frame3 frame
 	        frame3.getContentPane().add(p1);
 	        frame3.getContentPane().add(p2);
 	        frame3.getContentPane().add(p3);
@@ -1212,6 +1218,8 @@ public class Program extends JFrame {
     private JButton nextCardButtonReviewer = new JButton("Next Card");
     private JButton showAnswerButton = new JButton("Show Answer");
     private JButton setViewedButton = new JButton("Set as Viewed");
+    private JScrollPane reviewQuestionScroll = new JScrollPane(questionTextAreaReviewer);
+    private JScrollPane reviewAnswerScroll = new JScrollPane(answerTextAreaReviewer);
 
     // Menu stuff for reviewer
     JMenuBar reviewerMb = new JMenuBar();
