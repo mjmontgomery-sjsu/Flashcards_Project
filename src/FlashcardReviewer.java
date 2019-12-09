@@ -23,7 +23,13 @@ public class FlashcardReviewer {
     }
     
     public Flashcard getNextCard() {
-        return cardDeck.getFirst();
+        return cardDeck.get(time);
+    }
+    
+    public void setAsViewed() {
+    	Flashcard card = cardDeck.removeFirst();
+    	card.setViewed(true);
+    	cardDeck.add(card);
     }
     
     public void createCardDeck(File file) {
@@ -74,7 +80,5 @@ public class FlashcardReviewer {
                 return false;
         return true;
     }
-    
-    
 
 }

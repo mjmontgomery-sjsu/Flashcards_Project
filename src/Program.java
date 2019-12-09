@@ -185,30 +185,14 @@ public class Program extends JFrame {
         
 	        JPanel p1 = new JPanel();
 	        JPanel p1Inner = new JPanel();
-	        JPanel p1Inner2 = new JPanel();
-	        JPanel p1Inner3 = new JPanel();
 	        p1.setLayout(new GridLayout(1, 3));
 	        p1Inner.setLayout(new FlowLayout());
-	        p1Inner2.setLayout(new BorderLayout());
-	        p1Inner3.setLayout(new BorderLayout());
-	        p1.add(p1Inner2);
-	        p1.add(p1Inner3);
 	        p1.add(p1Inner);
 	        p1Inner.add(cardsStudiedLabel);
 	        p1Inner.add(cardsStudiedTextField);
 	        p1Inner.add(cardsRemainedLabel);
 	        p1Inner.add(cardsRemainedTextField);
-	        p1Inner2.add(readInButtonReviewer, BorderLayout.CENTER);
-	        p1Inner3.add(readOtherButton, BorderLayout.CENTER);
-	        p1Inner2.add(Box.createHorizontalStrut(5), BorderLayout.EAST);
-	        p1Inner2.add(Box.createHorizontalStrut(10), BorderLayout.WEST);
-	        p1Inner2.add(Box.createVerticalStrut(20), BorderLayout.NORTH);
-	        p1Inner2.add(Box.createVerticalStrut(20), BorderLayout.SOUTH);
-	        p1Inner3.add(Box.createHorizontalStrut(10), BorderLayout.EAST);
-	        p1Inner3.add(Box.createHorizontalStrut(5), BorderLayout.WEST);
-	        p1Inner3.add(Box.createVerticalStrut(20), BorderLayout.NORTH);
-	        p1Inner3.add(Box.createVerticalStrut(20), BorderLayout.SOUTH);
-	        
+
 	        // panel 2
 	        JPanel p2 = new JPanel();
 	        p2.setLayout(new BorderLayout());
@@ -216,6 +200,7 @@ public class Program extends JFrame {
 	        p2.add(questionTextAreaReviewer, BorderLayout.CENTER);
 	        p2.add(Box.createHorizontalStrut(30), BorderLayout.WEST);
 	        p2.add(Box.createHorizontalStrut(30), BorderLayout.EAST);
+            
 	        
 	        // panel 3
 	        JPanel p3 = new JPanel();
@@ -234,92 +219,47 @@ public class Program extends JFrame {
 	        p4Inner.add(setGoalButton);
 	        p4Inner.add(showAnswerButton);
 	        p4Inner.add(nextCardButtonReviewer);
+	        p4Inner.add(setViewedButton);
 	        p4.add(Box.createVerticalStrut(15), BorderLayout.NORTH);
 	        
-	        // panel 6
-	        JPanel p6 = new JPanel();
-	        JPanel p6Inner = new JPanel();
-	        p6.setLayout(new BorderLayout());
-	        p6Inner.setLayout(new FlowLayout());
-	        p6.add(p6Inner, BorderLayout.EAST);
-	        p6Inner.add(saveButton);
-	        p6Inner.add(exitButton);
-	        p6.add(Box.createVerticalStrut(40), BorderLayout.NORTH);
 	        
 	        // add these six panels to this frame
 	        frame3.getContentPane().add(p1);
 	        frame3.getContentPane().add(p2);
 	        frame3.getContentPane().add(p3);
 	        frame3.getContentPane().add(p4);
-	        frame3.getContentPane().add(p6);
+	        	
+	        	reviewerMb.add(reviewerMenu);
+	        	reviewerMb.setBackground(Color.CYAN);
+	        	reviewerMenu.add(reviewerItem1); 
+	        	reviewerMenu.add(reviewerItem2); 
+	        	reviewerMenu.add(reviewerItem3);
+	        	reviewerMenu.add(reviewerItem4);
+	         
+	        	reviewerMenu.setMnemonic(KeyEvent.VK_A);
+	            frame3.setJMenuBar(reviewerMb);
 
-	        // set label properties
-		        answerLabel.setLabelFor(answerTextAreaReviewer);
+	            answerLabel.setLabelFor(answerTextAreaReviewer);
 		        questionLabel.setLabelFor(questionTextAreaReviewer);
 		        cardsRemainedLabel.setLabelFor(cardsRemainedTextField);
 		        cardsStudiedLabel.setLabelFor(cardsStudiedTextField);
 		        cardsRemainedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		        cardsStudiedLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		        
-		        // attach listeners to each component
 		        showAnswerButton.addActionListener(new ShowAnswerButtonListener());
-		        saveButton.addActionListener(new SaveButtonListener());
-		        exitButton.addActionListener(new ExitButtonListener());
+		        reviewerItem3.addActionListener(new SaveButtonListener());
+		        reviewerItem4.addActionListener(new ExitButtonListener());
 		        nextCardButtonReviewer.addActionListener(new ReviewerNextCardButtonListener());
 		        setGoalButton.addActionListener(new SetGoalButtonListener());
-		        readInButtonReviewer.addActionListener(new ReadInButtonListener());
-		        readOtherButton.addActionListener(new ReadOtherButtonListener());
+		        reviewerItem2.addActionListener(new ReadInButtonListener());
+		        reviewerItem1.addActionListener(new ReadOtherButtonListener());
+		        setViewedButton.addActionListener(new SetViewedButtonListener());
 		        
-		        // set keyboard equivalents for each button
-		        setGoalButton.setMnemonic('g');
-		        showAnswerButton.setMnemonic('a');
-		        nextCardButtonReviewer.setMnemonic('n');
-		        saveButton.setMnemonic('s');
-		        exitButton.setMnemonic('e');
-		        readInButtonReviewer.setMnemonic('l');
-		        readOtherButton.setMnemonic('f');
-		        
-		        // set color and font themes
-		        // panel 1
-		        p1.setBackground(new Color(230, 230, 250));
-		        p1Inner.setBackground(new Color(230, 230, 250));
-		        p1Inner2.setBackground(new Color(230, 230, 250));
-		        p1Inner3.setBackground(new Color(230, 230, 250));
-		        readInButtonReviewer.setBackground(new Color(152, 251, 152));
-		        readOtherButton.setBackground(new Color(152, 251, 152));
-		        cardsStudiedTextField.setBackground(new Color(255, 240, 245));
-		        cardsStudiedTextField.setForeground(new Color(0, 0, 205));
-		        cardsRemainedTextField.setBackground(new Color(255, 240, 245));
-		        cardsRemainedTextField.setForeground(new Color(255, 0, 0));
-		        // panel 2
-		        p2.setBackground(new Color(210, 255, 215));
-		        questionTextAreaReviewer.setForeground(new Color(0, 0, 205));
-		        questionTextAreaReviewer.setBackground(new Color(255, 255, 204));
-		        questionTextAreaReviewer.setFont(new Font("Consolas", Font.PLAIN, 17));
-		        // panel 3
-		        p3.setBackground(new Color(210, 255, 215));
-		        answerTextAreaReviewer.setBackground(new Color(255, 255, 204));
-		        answerTextAreaReviewer.setForeground(new Color(255, 69, 0));
-		        answerTextAreaReviewer.setFont(new Font("Consolas", Font.PLAIN, 17));
-		        // panel 4
-		        p4.setBackground(new Color(210, 255, 215));
-		        p4Inner.setBackground(new Color(210, 255, 215));
-		        showAnswerButton.setBackground(new Color(255, 222, 173));
-		        setGoalButton.setBackground(new Color(240, 230, 140));
-		        nextCardButtonReviewer.setBackground(new Color(255, 160, 122));
-		        // panel 6
-		        p6.setBackground(new Color(210, 255, 215));
-		        p6Inner.setBackground(new Color(255, 182, 193));
-		        saveButton.setForeground(new Color(255, 255, 0));
-		        saveButton.setBackground(new Color(138, 43, 226));
-		        exitButton.setForeground(new Color(255, 255, 0));
-		        exitButton.setBackground(new Color(218, 112, 214));
-		        
-		        // set initial component visibility
 		        setTextFieldEditable(false);
 		        setTextFieldEnabled(false);
 		        setButtonEnabled(false);
 		        setGoalButton.setEnabled(false);
+		        setViewedButton.setEnabled(false);
 
     }
 
@@ -780,18 +720,20 @@ public class Program extends JFrame {
      *************** Creates listener classes. ***************
      */
     /**
-     * Inner class that handles events for showAnswerButton.
+     * Class that handles events for the show answer button.
      */
     class ShowAnswerButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             Flashcard currentCard = reviewer.getNextCard();
             answerTextAreaReviewer.setText(currentCard.getAnswer());
             showAnswerButton.setEnabled(false);
+            nextCardButtonReviewer.setEnabled(true);
+            setViewedButton.setEnabled(true);
         }
     }
     
     /**
-     * Inner class that handles events for saveButton.
+     * Class that handles events for the save command in the drop down.
      */
     class SaveButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -811,7 +753,7 @@ public class Program extends JFrame {
     }
     
     /**
-     * Inner class that handles events for exitButton.
+     * Class that handles events for the quit command in the drop down.
      */
     class ExitButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -831,11 +773,15 @@ public class Program extends JFrame {
         }
     }
     
+    /**
+     * Class that handles events for the next card button
+     */
     class ReviewerNextCardButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
         	reviewer.advance();
             nextCardButtonReviewer.setEnabled(false);
             showAnswerButton.setEnabled(true);
+            setViewedButton.setEnabled(false);
             cardsStudiedTextField.setText(Integer.toString(reviewer.getTime()));
             cardsRemainedTextField.setText(
                     Integer.toString(reviewer.getGoal() - reviewer.getTime()));
@@ -862,7 +808,20 @@ public class Program extends JFrame {
     }
     
     /**
-     * Inner class that handles events for setGoalButton.
+     * Class that handles events for the set viewed button.
+     */
+    class SetViewedButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+        	reviewer.setAsViewed();
+            nextCardButtonReviewer.setEnabled(true);
+            showAnswerButton.setEnabled(false);
+            setViewedButton.setEnabled(false);
+            reviewer.save();
+        }
+    }
+    
+    /**
+     * Class that handles events for the set goal button.
      */
     class SetGoalButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -882,6 +841,7 @@ public class Program extends JFrame {
                 answerTextAreaReviewer.setText("Click 'Show Answer' button to see.");
                 showAnswerButton.setEnabled(true);
                 setGoalButton.setEnabled(false);
+                setViewedButton.setEnabled(false);
             }
             catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(
@@ -908,7 +868,7 @@ public class Program extends JFrame {
     }
     
     /**
-     * Inner class that handles events for readInButton.
+     * Class that handles events for the default file reading in
      */
     class ReadInButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -918,9 +878,8 @@ public class Program extends JFrame {
                         "Read data file successfully! You can now edit the file.", 
                         "Successful Read-in", 
                         JOptionPane.INFORMATION_MESSAGE);
-                readInButtonReviewer.setEnabled(false);
-                readOtherButton.setEnabled(false);
                 setGoalButton.setEnabled(true);
+                setViewedButton.setEnabled(false);
                 questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
             }
             else if (reviewer.read() == 0) {
@@ -941,7 +900,7 @@ public class Program extends JFrame {
     }
     
     /**
-     * Inner class that handles events for readOtherButton.
+     * Class that handles events for the finding a file to read in
      */
     class ReadOtherButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -952,9 +911,8 @@ public class Program extends JFrame {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File file = chooser.getSelectedFile();
                     reviewer.createCardDeck(file);
-                    readInButtonReviewer.setEnabled(false);
-                    readOtherButton.setEnabled(false);
                     setGoalButton.setEnabled(true);
+                    setViewedButton.setEnabled(false);
                     questionTextAreaReviewer.setText("Please click 'Set Your Goal' button.");
                 }            
             }
@@ -1107,7 +1065,6 @@ public class Program extends JFrame {
     private void setButtonEnabled(boolean b) {
         showAnswerButton.setEnabled(false);
         nextCardButtonReviewer.setEnabled(false);
-        saveButton.setEnabled(false);
     }
 
     /**
@@ -1246,17 +1203,20 @@ public class Program extends JFrame {
     private JLabel answerLabel = new JLabel("     Answer: ");
     private JTextField cardsStudiedTextField = new JTextField("##");
     private JTextField cardsRemainedTextField = new JTextField("##");
-    private JTextArea questionTextAreaReviewer = new JTextArea("Please click 'Read Data File' button to begin.");
-    private JTextArea answerTextAreaReviewer = new JTextArea("");
+    private JTextArea questionTextAreaReviewer = new JTextArea("Select File in the Menu to Load to begin!",10,20);
+    private JTextArea answerTextAreaReviewer = new JTextArea(10,20);
     private JButton setGoalButton = new JButton("Set Your Goal!");
     private JButton nextCardButtonReviewer = new JButton("Next Card");
     private JButton showAnswerButton = new JButton("Show Answer");
-    private JButton saveButton = new JButton("Save");
-    private JButton exitButton = new JButton("Exit");
-    private JButton readInButtonReviewer = new JButton("Load Last Progress");
-    private JButton readOtherButton = new JButton("Load From...");
+    private JButton setViewedButton = new JButton("Set as Viewed");
 
-
+    // Menu stuff for reviewer
+    JMenuBar reviewerMb = new JMenuBar();
+    JMenu reviewerMenu = new JMenu("File");
+    JMenuItem reviewerItem1 = new JMenuItem("Read File");
+    JMenuItem reviewerItem2 = new JMenuItem("Read the Default File");
+    JMenuItem reviewerItem3 = new JMenuItem("Save");
+    JMenuItem reviewerItem4 = new JMenuItem("Quit");
 }
 
 
