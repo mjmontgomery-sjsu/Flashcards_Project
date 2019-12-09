@@ -177,11 +177,11 @@ public class Program extends JFrame {
         frame2.setVisible(true);
 
         //Reviewer Window
-        JFrame frame3 = new JFrame("Flashcard Study");
+        JFrame frame3 = new JFrame("Study Flashcards");
         frame3.setBounds(750,50, 600, 600);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setVisible(true);
-        getContentPane().setLayout(new GridLayout(6, 1));
+        frame3.getContentPane().setLayout(new GridLayout(6, 1));
         
 	        JPanel p1 = new JPanel();
 	        JPanel p1Inner = new JPanel();
@@ -247,11 +247,11 @@ public class Program extends JFrame {
 	        p6.add(Box.createVerticalStrut(40), BorderLayout.NORTH);
 	        
 	        // add these six panels to this frame
-	        getContentPane().add(p1);
-	        getContentPane().add(p2);
-	        getContentPane().add(p3);
-	        getContentPane().add(p4);
-	        getContentPane().add(p6);
+	        frame3.getContentPane().add(p1);
+	        frame3.getContentPane().add(p2);
+	        frame3.getContentPane().add(p3);
+	        frame3.getContentPane().add(p4);
+	        frame3.getContentPane().add(p6);
 
 	        // set label properties
 		        answerLabel.setLabelFor(answerTextAreaReviewer);
