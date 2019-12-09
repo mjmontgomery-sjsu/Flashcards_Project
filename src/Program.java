@@ -49,7 +49,7 @@ public class Program extends JFrame {
 
     /**
      * Method that puts the Components of the Interface Together
-     * for the Flashcard Editor Part of the Program
+     * for the Flashcard Editor and Flashcard Reviewer.
      */
     void createGUI()
     {
@@ -76,7 +76,9 @@ public class Program extends JFrame {
             answerTextArea.setForeground(Color.BLACK);
             questionTextArea.setEditable(false);
             answerTextArea.setEditable(false);
+            numberOfCardsTextField.setEditable(false);
             statusTextField.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+            numberOfCardsTextField.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
 
 
 
@@ -96,24 +98,33 @@ public class Program extends JFrame {
             answerPanel.add(answerScroll);
 
 
-        //Next Prev and find buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(prevCardButton);
-        buttonPanel.add(findCardButton);
-        buttonPanel.add(nextCardButton);
+            //Next Prev and find buttons
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new FlowLayout());
+            buttonPanel.add(prevCardButton);
+            buttonPanel.add(findCardButton);
+            buttonPanel.add(nextCardButton);
 
-        //Panel for Status
-        JPanel statusPanel = new JPanel();
-        statusPanel.setLayout(new GridLayout());
-        statusPanel.add(statusLabel);
-        statusPanel.add(statusTextField);
+            //Panel for Status
+            JPanel statusPanel = new JPanel();
+            statusPanel.setLayout(new GridLayout());
+            statusPanel.add(statusLabel);
+            statusPanel.add(statusTextField);
+
+            //Panel for # of Cards In Deck
+            JPanel numberOfCardsPanel = new JPanel();
+            numberOfCardsPanel.setLayout(new GridLayout());
+            numberOfCardsPanel.add(numberOfCardsInDeck);
+            numberOfCardsPanel.add(numberOfCardsTextField);
+
+
 
             //Add Question Panel, Answer Panel, Status Panel and Button Panel to panel1
               panel1.add(questionPanel,BorderLayout.NORTH);
               panel1.add(Box.createRigidArea(new Dimension(10,0)));
               panel1.add(answerPanel,BorderLayout.NORTH);
               panel1.add(statusPanel,BorderLayout.WEST);
+              panel1.add(numberOfCardsPanel);
               panel1.add(Box.createRigidArea(new Dimension(10,10)));
               panel1.add(buttonPanel,BorderLayout.SOUTH);
 
@@ -171,10 +182,10 @@ public class Program extends JFrame {
 
 
         //Quizzer Window
-        JFrame frame2 = new JFrame("Flashcard Quizzer");
-        frame2.setBounds(750,50, 600, 600);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame2.setVisible(true);
+      //  JFrame frame2 = new JFrame("Flashcard Quizzer");
+        //frame2.setBounds(750,50, 600, 600);
+        //frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame2.setVisible(true);
 
         //Reviewer Window
         JFrame frame3 = new JFrame("Review Flashcards");
@@ -722,7 +733,7 @@ public class Program extends JFrame {
 
 
 
-    //Put Listners for Quizzer Here
+    //Put Listners for Reviewer Here
     /**
      *************** Creates listener classes. ***************
      */
@@ -834,7 +845,7 @@ public class Program extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             try {
                 int goal = Integer.parseInt(
-                        JOptionPane.showInputDialog("How many cards " +
+                        JOptionPane.showInputDialog("The deck size is: " + reviewer.getCardDeckSize() + "\n" + "How many cards " +
                         		"would you like to study?").trim());
                 if (goal <= 0 || goal > reviewer.getCardDeckSize())
                     throw new IndexOutOfBoundsException();
@@ -949,6 +960,7 @@ public class Program extends JFrame {
     private void displayTextFieldContent() {
         questionTextArea.setText(folder.returnCurrentCard().getQuestion());
         answerTextArea.setText(folder.returnCurrentCard().getAnswer());
+        numberOfCardsTextField.setText(Integer.toString(folder.getDeckSize()));
         //intervalTextField.setText(Integer.toString(
             //    folder.returnCurrentCard().getInterval()));
        // presentationTextField.setText(Integer.toString(
@@ -1163,10 +1175,12 @@ public class Program extends JFrame {
     private FlashcardFolder folder = new FlashcardFolder();
     private FlashcardReviewer reviewer = new FlashcardReviewer();
 
+
     //TextArea and Field for Editor
     private JTextArea questionTextArea = new JTextArea("Select File in the Menu to Load or Create a Deck",10,20);
     private JTextArea answerTextArea = new JTextArea(10,20);
     private JTextField statusTextField = new JTextField();
+    private JTextField  numberOfCardsTextField = new JTextField();
 
     //Buttons for Editor
     private JButton prevCardButton = new JButton("Previous Card");
@@ -1185,6 +1199,7 @@ public class Program extends JFrame {
 
     //Labels for Editor
     private JLabel statusLabel = new JLabel("             Been Viewed?: ");
+    private JLabel numberOfCardsInDeck = new JLabel("Number of Cards: ");
 
     //Scroll Panes for Editor
     JScrollPane answerScroll = new JScrollPane(answerTextArea);;
