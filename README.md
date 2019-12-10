@@ -33,14 +33,18 @@ To create a new Deck; select 'File' then 'Create a Blank Deck'.
 
 ***NOTE: Creating a new Deck overrides the default deck.txt file. Please save any pre-existing work by copying the deck.txt file into another directory before proceeding with a blank deck.***
 
-After the Blank deck is created click 'Add New Card' to begin adding cards into the deck
+After the Blank deck is created click 'Add New Card' to begin adding cards into the deck.
 
 ## Flashcard Reviewer Window Instructions
 
 ### Opening a Deck
-To open a deck to study; select 'File' then either 'Read File' or 'Read The Default File' 
+To open a deck to study; select 'File' then either 'Read File' or 'Read The Default File'.
 
 **NOTE: As noted above, reading the default file reads the deck.txt file in the main project directory**
+
+The user will then be prompted to set the goal for the number of cards to be studied.
+
+The user can now study the flashcards by selecting 'show answer' to revel the answer. 
 
 
 
