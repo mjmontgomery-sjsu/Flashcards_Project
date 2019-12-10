@@ -31,7 +31,7 @@ The deck will be loaded and can be edited.
 ### Making a new Deck
 To create a new Deck; select 'File' then 'Create a Blank Deck'.
 
-**NOTE: Creating a new Deck overrides the default deck.txt file. Please save any pre-existing work by copying the deck.txt file into another directory. **
+**NOTE: Creating a new Deck overrides the default deck.txt file. Please save any pre-existing work by copying the deck.txt file into another directory. 
 
 After the Blank deck is created click 'Add New Card' to begin adding cards into the deck
 
