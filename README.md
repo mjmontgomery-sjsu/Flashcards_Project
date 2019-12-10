@@ -1,5 +1,5 @@
-# Flashcards_Project
-Create, Edit and store Flashcards to study. This program stores flashcards ina textfile to be read, edited and studied.  
+# Flashcards Program
+Create, Edit and Store Flashcards to study. This program stores flashcards in a textfile to be read, edited and studied.  
 
 ## Starting The Program
 To start the program, open Terminal and navigate to the directory of the Flashcards_Project folder.
