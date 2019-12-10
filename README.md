@@ -15,3 +15,4 @@ Then Type:
 Java Program
 
 ```
+Two Windows will be opened; The Editor Window and the Flashcard Reviewer Window. 
