@@ -16,3 +16,7 @@ Java Program
 
 ```
 Two Windows will be opened; The Editor Window and the Flashcard Reviewer Window. 
+
+To open a Flashcard Deck to edit; select 'File' then 'Read the Default File'from the menubar. 
+
+To open an already existing deck; select 'File' then 'Read File' from the menubar.
