@@ -192,6 +192,7 @@ public class Program extends JFrame {
         frame3.setBounds(750,50, 600, 600);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setVisible(true);
+        frame3.setResizable(false);
         frame3.getContentPane().setLayout(new GridLayout(6, 1));
 
         //Set state of Test areas
@@ -393,6 +394,7 @@ public class Program extends JFrame {
                     null,
                     "Creating a new blank deck file will overwrite the" +
                             " default deck.\nThis action cannot be reversed.\n" +
+                            "Please copy deck.txt to another place in your directory.\n" +
                             "Do you want to create a blank deck file?",
                     "Warning",
                     JOptionPane.YES_NO_OPTION);
@@ -406,6 +408,7 @@ public class Program extends JFrame {
                 setPrevNextButtonVisibility(0, folder.getDeckSize() - 1);
                 displayBlankTextFieldContent();
                 setEditButtonsEnabled(false);
+                removeCardButton.setEnabled(false);
                 i3.setEnabled(true);
                 i4.setEnabled(true);
                 b1.setEnabled(true);
@@ -635,7 +638,7 @@ public class Program extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             int yesNo = JOptionPane.showConfirmDialog(
                     null,
-                    "Reset all cards to virgin status.\nThis action cannot" +
+                    "Reset all cards to not Been Viewed status.\nThis action cannot" +
                             " be reversed.\nDo you really want to reset these cards?",
                     "Warning",
                     JOptionPane.YES_NO_OPTION);
@@ -674,7 +677,10 @@ public class Program extends JFrame {
                     "Would you like to create a new card?",
                     "Confirm",
                     JOptionPane.YES_NO_OPTION);
-            if (yesNo == JOptionPane.YES_OPTION) addCard();
+            if (yesNo == JOptionPane.YES_OPTION) {
+                addCard();
+                removeCardButton.setEnabled(true);
+            }
         }
     }
 
